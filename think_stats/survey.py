@@ -9,14 +9,18 @@ import sys
 import gzip
 import os
 
+
 class Record(object):
     """Represents a record."""
 
-class Respondent(Record): 
+
+class Respondent(Record):
     """Represents a respondent."""
+
 
 class Pregnancy(Record):
     """Represents a pregnancy."""
+
 
 class Table(object):
     """Represents a table as a list of objects"""
@@ -127,6 +131,7 @@ class Respondents(Table):
             ('caseid', 1, 12, int),
             ]
 
+
 class Pregnancies(Table):
     """Contains survey data about a Pregnancy."""
 
@@ -182,17 +187,3 @@ class Pregnancies(Table):
                     rec.totalwgt_oz = 'NA'
             except AttributeError:
                 pass
-
-
-def main(name, data_dir='.'):
-    resp = Respondents()
-    resp.ReadRecords(data_dir)
-    print 'Number of respondents', len(resp.records)
-
-    preg = Pregnancies()
-    preg.ReadRecords(data_dir)
-    print 'Number of pregnancies', len(preg.records)
-
-    
-if __name__ == '__main__':
-    main(*sys.argv)
